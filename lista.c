@@ -398,5 +398,6 @@ int main()
 	killLista(L, removerInt);
 	printf("Lista destruida\n");
 
+	printf("hahahaha");
 	return 0;
 }
