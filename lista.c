@@ -316,95 +316,87 @@ void killLista(Lista L, removerItem removedor)
 	free(L);
 }
 
-/* A utility function to swap two elements */
-void swap(struct listanode *a, struct listanode *b)
+void removerInt(void *x)
 {
-	struct listanode *temp = a;
-	a = b;
-	b = temp;
-}
-// função que cria um vetor com os elementos da lista, embaralha o vetor e depois recria a lista com os elementos do vetor
-void shuffle(Lista L)
-{
-	struct lista *pointer = L;
-	struct listanode *pointernode = pointer->l;
-	int i = 0;
-	int n = length(L);
-	Item *vetor = malloc(n * sizeof(Item));
-	while (pointernode != NIL)
-	{
-		vetor[i] = pointernode->info;
-		pointernode = pointernode->prox;
-		i++;
-	}
-	srand(time(NULL));
-	for (int i = n - 1; i > 0; i--)
-	{
-		int j = rand() % (i + 1);
-		Item temp = vetor[i];
-		vetor[i] = vetor[j];
-		vetor[j] = temp;
-	}
-	pointernode = pointer->l;
-	i = 0;
-	while (pointernode != NIL)
-	{
-		pointernode->info = vetor[i];
-		pointernode = pointernode->prox;
-		i++;
-	}
-	free(vetor);
+	free(x);
 }
 
-/* Considers last element as pivot, places the
-pivot element at its correct position in sorted array,
-and places all smaller (smaller than pivot) to left
-of pivot and all greater elements to right of pivot */
-struct listanode *partition(struct listanode *l, struct listanode *h)
+// Função auxiliar para imprimir uma lista de inteiros
+void imprimirLista(Lista L)
 {
-	// set pivot as h element
-	int area = h->area;
-
-	// similar to i = l-1 for array implementation
-	struct listanode *i = l->ant;
-
-	// Similar to "for (int j = l; j <= h- 1; j++)"
-	for (struct listanode *j = l; j != h; j = j->prox)
+	printf("Lista: ");
+	Posic p = getFirst(L);
+	while (p != NIL)
 	{
-		if (j->area <= area)
-		{
-			// Similar to i++ for array
-			i = (i == NULL) ? l : i->prox;
-
-			swap(i, j);
-		}
+		int *info = (int *)get(L, p);
+		printf("%d ", *info);
+		p = getNext(L, p);
 	}
-	i = (i == NULL) ? l : i->prox; // Similar to i++
-	swap(i, h);
-	return i;
+	printf("\n");
 }
 
-/* A recursive implementation of quicksort for linked list */
-void _quickSort(struct listanode *l, struct listanode *h)
+int main()
 {
-	if (h != NULL && l != h && l != h->prox)
+	Lista L = createLista(5);
+	printf("Lista criada com capacidade %d\n", maxLength(L));
+
+	printf("A lista esta vazia? %d\n", isEmpty(L));
+	printf("A lista esta cheia? %d\n", isFull(L));
+
+	Item i1 = malloc(sizeof(int));
+	*((int *)i1) = 1;
+	Item i2 = malloc(sizeof(int));
+	*((int *)i2) = 2;
+	Item i3 = malloc(sizeof(int));
+	*((int *)i3) = 3;
+	Item i4 = malloc(sizeof(int));
+	*((int *)i4) = 4;
+	Item i5 = malloc(sizeof(int));
+	*((int *)i5) = 5;
+	// Teste de inserção
+	insert(L, i1, 1.5);
+	insert(L, i2, 2.0);
+	insert(L, i3, 3.5);
+	insert(L, i4, 2.5);
+	insert(L, i5, 1.0);
+	imprimirLista(L);
+
+	// Teste de pop
+	Item i = pop(L, removerInt);
+	printf("Item removido: %d\n", *((int *)i));
+	imprimirLista(L);
+
+	// Teste de remover
+	Posic p = getLast(L);
+	remover(L, p, removerInt);
+	imprimirLista(L);
+
+	// Teste de insertBefore e insertAfter
+	p = getLast(L);
+	insertBefore(L, p, (Item)(&(int){6}));
+	p = getFirst(L);
+	insertAfter(L, p, (Item)(&(int){0}));
+	imprimirLista(L);
+
+	// Teste de getFirst, getNext, getLast e getPrevious
+	printf("Primeiro item: %d\n", *((int *)get(L, getFirst(L))));
+	printf("Ultimo item: %d\n", *((int *)get(L, getLast(L))));
+	p = getFirst(L);
+	while (p != NIL)
 	{
-		struct listanode *p = partition(l, h);
-		_quickSort(l, p->ant);
-		_quickSort(p->prox, h);
+		printf("Item atual: %d\n", *((int *)get(L, p)));
+		p = getNext(L, p);
 	}
+	p = getLast(L);
+	while (p != NIL)
+	{
+		printf("Item atual: %d\n", *((int *)get(L, p)));
+		p = getPrevious(L, p);
+	}
+
+	// Teste de killLista
+	killLista(L, removerInt);
+	printf("Lista destruida\n");
+
+	return 0;
 }
-
-// The main function to sort a linked list.
-// It mainly calls _quickSort()
-void quickSort(Lista *head)
-{
-	shuffle(head);
-	// Find last node
-	struct listanode *h = getLast(head);
-	struct listanode *l = getFirst(head);
-
-	// Call the recursive QuickSort
-	_quickSort(l, h);
-}
-
