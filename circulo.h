@@ -4,7 +4,9 @@
 typedef struct Circle Circle;
 
 Circle *createCircle(int id, double x, double y, double r, char *fill);
-
+/*
+Cria um circulo com os parametros passados
+*/
 void circleSetId(Circle *cir, int id);
 
 void circleSetCx(Circle *cir, double x);
