@@ -318,7 +318,7 @@ void killLista(Lista L, removerItem removedor)
 
 void removerInt(void *x)
 {
-	free((int *)x);
+	free(x);
 }
 
 // Função auxiliar para imprimir uma lista de inteiros
@@ -343,12 +343,22 @@ int main()
 	printf("A lista esta vazia? %d\n", isEmpty(L));
 	printf("A lista esta cheia? %d\n", isFull(L));
 
+	Item i1 = malloc(sizeof(int));
+	*((int *)i1) = 1;
+	Item i2 = malloc(sizeof(int));
+	*((int *)i2) = 2;
+	Item i3 = malloc(sizeof(int));
+	*((int *)i3) = 3;
+	Item i4 = malloc(sizeof(int));
+	*((int *)i4) = 4;
+	Item i5 = malloc(sizeof(int));
+	*((int *)i5) = 5;
 	// Teste de inserção
-	insert(L, (Item)(&(int){1}), 1.5);
-	insert(L, (Item)(&(int){2}), 2.0);
-	insert(L, (Item)(&(int){3}), 3.5);
-	insert(L, (Item)(&(int){4}), 2.5);
-	insert(L, (Item)(&(int){5}), 1.0);
+	insert(L, i1, 1.5);
+	insert(L, i2, 2.0);
+	insert(L, i3, 3.5);
+	insert(L, i4, 2.5);
+	insert(L, i5, 1.0);
 	imprimirLista(L);
 
 	// Teste de pop
