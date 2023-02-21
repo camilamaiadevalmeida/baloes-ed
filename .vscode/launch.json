@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/mila/Documents/baloes-ed",
-      "program": "/home/mila/Documents/baloes-ed/build/Debug/outDebug",
+      "cwd": "/home/gneto/Documentos/UEL/ED/baloes-ed",
+      "program": "/home/gneto/Documentos/UEL/ED/baloes-ed/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
