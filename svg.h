@@ -115,7 +115,7 @@ Atributos de formatacao (cores, fonte, etc) podem ser informados pela string
 deco (atribuir NULL, caso nao queira atribuir decoracao). As formatacoes mais usuais 
 podem preparadas por meio da operacao preparaDecoracaoTexto.
  */
-void escreveTextoSvg(ArqSvg fsvg, double x, double y, char *txt; char *decoTxt);
+void escreveTextoSvg(ArqSvg fsvg, double x, double y, char *txt, char *decoTxt);
 
 /* Fecha o arquivo fsvg. */
 void fechaSvg(ArqSvg fsvg);
