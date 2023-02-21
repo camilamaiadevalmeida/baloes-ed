@@ -116,7 +116,7 @@ Posic insert(Lista L, Item info, double area)
 	}
 }
 
-Item pop(Lista L, removerItem removedor)
+Item pop(Lista L)
 {
 	Item valor;
 	struct listanode *elemento = getFirst(L);
@@ -127,7 +127,7 @@ Item pop(Lista L, removerItem removedor)
 	else
 	{
 		valor = elemento->info;
-		remover(L, elemento, removedor);
+		remover(L, elemento, NULL);
 		return valor;
 	}
 }
@@ -362,7 +362,7 @@ int main()
 	imprimirLista(L);
 
 	// Teste de pop
-	Item i = pop(L, removerInt);
+	Item i = pop(L);
 	printf("Item removido: %d\n", *((int *)i));
 	imprimirLista(L);
 
@@ -397,7 +397,7 @@ int main()
 	// Teste de killLista
 	killLista(L, removerInt);
 	printf("Lista destruida\n");
-
+	free(i);
 	printf("hahahaha");
 	return 0;
 }
