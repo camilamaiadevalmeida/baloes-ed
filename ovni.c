@@ -12,60 +12,73 @@ struct Ovni
     bool envio;
 };
 
-ovni createOvni(int id, char tipo, bool envio)
+ovni *createOvni(int id, char tipo, bool envio, Item info)
 {
     struct Ovni *ov = malloc(sizeof(struct Ovni));
     ovniSetid(ov, id);
     ovniSettipo(ov, tipo);
     ovniSetenvio(ov, envio);
+    ovniSetinfo(ov, info);
     return ov;
 }
 
-void ovniSetid(ovni ov, int id)
+void ovniSetId(ovni ov, int id)
 {
     struct Ovni *pointer = ov;
     pointer->id = id;
 }
 
-void ovniSettipo(ovni ov, char tipo)
+void ovniSetTipo(ovni ov, char tipo)
 {
     struct Ovni *pointer = ov;
     pointer->tipo = tipo;
 }
 
-void ovniSetenvio(ovni ov, bool envio)
+void ovniSetEnvio(ovni ov, bool envio)
 {
     struct Ovni *pointer = ov;
     pointer->envio = envio;
 }
 
-void ovniSetinfo(ovni ov, Item info)
+void ovniSetInfo(ovni ov, Item info)
 {
     struct Ovni *pointer = ov;
     pointer->info = info;
 }
 
-int ovniGetid(ovni ov)
+int ovniGetId(ovni ov)
 {
     struct Ovni *pointer = ov;
     return pointer->id;
 }
 
-char ovniGettipo(ovni ov)
+char ovniGetTipo(ovni ov)
 {
     struct Ovni *pointer = ov;
     return pointer->tipo;
 }
 
-bool ovniGetenvio(ovni ov)
+bool ovniGetEnvio(ovni ov)
 {
     struct Ovni *pointer = ov;
     return pointer->envio;
 }
 
-Item ovniGetinfo(ovni ov)
+Item ovniGetInfo(ovni ov)
 {
     struct Ovni *pointer = ov;
+    return pointer->info;
+}
+
+void ovniSetItem(ovni o, void *item)
+{
+    struct Ovni *pointer = o;
+    pointer->info = item;
+}
+
+Item ovniGetItem(ovni o)
+{
+    struct Ovni *pointer = o;
     return pointer->info;
 }
 

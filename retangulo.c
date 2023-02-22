@@ -119,7 +119,7 @@ double retanguloGetarea(retangulo ret)
     return pointer->h * pointer->w;
 }
 
-double retanguloGetrotacao(retangulo ret)
+double retanguloGetRotacao(retangulo ret)
 {
     struct Rectangle *pointer = ret;
     return pointer->rotacao;

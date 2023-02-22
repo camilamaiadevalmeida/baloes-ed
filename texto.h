@@ -12,7 +12,7 @@ conteúdo, cor de borda, cor de preenchimento, fonte, tamanho, preso e rotação
 typedef void *texto;
 
 /**CREATE_TEXTO retorna um TEXTO;*/
-texto createTexto(int id,
+texto textoCreate(int id,
                   double x,
                   double y,
                   char *conteudo,

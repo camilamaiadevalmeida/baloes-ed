@@ -17,7 +17,7 @@ typedef void* ovni;
  * @param tipo - tipo do ovni
  * @return - retorna um ovni
  */
-ovni *createOvni(int id, void *item, char tipo);
+ovni *createOvni(int id, char tipo, bool envio, Item info);
 
 /** Define o id do ovni
  * @param o - ovni
@@ -43,10 +43,6 @@ void ovniSetTipo(ovni o, char tipo);
  */
 void ovniSetEnvio(ovni o, bool envio);
 
-/** Libera a memoria alocada para o ovni
- * @param o - ovni
- */
-void ovniFree(ovni o);
 
 /** Retorna o id do ovni
  * @param o - ovni
@@ -58,13 +54,13 @@ int ovniGetId(ovni o);
  * @param o - ovni
  * @return - retorna o item do ovni
  */
-void *ovniGetItem(ovni o);
+Item ovniGetItem(ovni o);
 
 /** Retorna o tipo do ovni
  * @param o - ovni
  * @return - retorna o tipo do ovni
  */
-char *ovniGetTipo(ovni o);
+char ovniGetTipo(ovni o);
 
 /** Retorna a checagem de envio do ovni
  * @param o - ovni
@@ -76,19 +72,12 @@ bool ovniGetEnvio(ovni o);
  * @param o - ovni
  * @return - retorna o tipo do ovni
  */
-char *ovniGetTipo(ovni o);
+char ovniGetTipo(ovni o);
 
 /** Retorna o tipo do ovni
  * @param o - ovni
  * @return - retorna o tipo do ovni
  */
-char *ovniGetTipo(ovni o);
-
-/** Retorna o tipo do ovni
- * @param o - ovni
- * @return - retorna o tipo do ovni
- */
-char *ovniGetTipo(ovni o);
 
 /** Destroi o ovni*/
 void destroiOvni(Item o);
