@@ -316,7 +316,7 @@ void killLista(Lista L, removerItem removedor)
 	free(L);
 }
 
-void removerInt(void *x)
+void removerInt(Item x)
 {
 	free(x);
 }
