@@ -49,7 +49,7 @@ Posic insert(Lista L, Item info, double area);
 
 /** Remove e retorna o primeiro elemento da lista L. A lista nao pode
     estar vazia */
-Item pop(Lista L, removerItem removedor);
+Item pop(Lista L);
 
 /** Remove o elemento da lista L indicado por p.  p deve indicar um elemento existente em L. O comprimento da lista e' diminuido de 1 elemento. */
 void remover(Lista L, Posic p, removerItem removedor);
