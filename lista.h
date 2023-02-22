@@ -18,7 +18,6 @@ Tal valor invalido e' denotado por NIL.
 typedef void *Lista;
 typedef void *Posic;
 typedef void *Item;
-typedef void (*removerItem)(Item);
 
 #define NIL NULL
 #define CAPAC_ILIMITADA -1
@@ -49,10 +48,10 @@ Posic insert(Lista L, Item info, double area);
 
 /** Remove e retorna o primeiro elemento da lista L. A lista nao pode
     estar vazia */
-Item pop(Lista L, removerItem removedor);
+Item pop(Lista L);
 
 /** Remove o elemento da lista L indicado por p.  p deve indicar um elemento existente em L. O comprimento da lista e' diminuido de 1 elemento. */
-void remover(Lista L, Posic p, removerItem removedor);
+void remover(Lista L, Posic p, void (*removerItem)(Item));
 
 /** Retorna o valor do item da lista indicado por p.
     p deve indicar um elemento existente em L. */
@@ -88,7 +87,5 @@ indicado por p. Se p for o primeiro elemento da lista, retorna NIL.
 p deve indicar um elemento existente em L. */
 Posic getPrevious(Lista L, Posic p);
 
-/** Libera toda memória alocada pela lista. */
-void killLista(Lista L, removerItem removedor);
 
 #endif

@@ -1,4 +1,5 @@
 #include "lista.h"
+#include <assert.h>
 
 struct listanode
 {
@@ -116,7 +117,7 @@ Posic insert(Lista L, Item info, double area)
 	}
 }
 
-Item pop(Lista L, removerItem removedor)
+Item pop(Lista L)
 {
 	Item valor;
 	struct listanode *elemento = getFirst(L);
@@ -127,15 +128,16 @@ Item pop(Lista L, removerItem removedor)
 	else
 	{
 		valor = elemento->info;
-		remover(L, elemento, removedor);
+		remover(L, elemento, NULL);
 		return valor;
 	}
 }
 
-void remover(Lista L, Posic p, removerItem removedor)
+void remover(Lista L, Posic p, void (*removerItem)(Item))
 {
 	struct lista *pointer = L;
 	struct listanode *pointernode = pointer->l;
+
 	if (!isEmpty(L))
 	{
 		if (p == getFirst(L))
@@ -147,9 +149,9 @@ void remover(Lista L, Posic p, removerItem removedor)
 			}
 			if (pointernode->info != NIL)
 			{
-				if (removedor != NIL)
+				if (removerItem != NIL)
 				{
-					removedor(pointernode->info);
+					removerItem(pointernode->info);
 				}
 				else
 				{
@@ -167,9 +169,9 @@ void remover(Lista L, Posic p, removerItem removedor)
 			}
 			if (pointernode->prox->info != NIL)
 			{
-				if (removedor != NIL)
+				if (removerItem != NIL)
 				{
-					removedor(pointernode->prox->info);
+					removerItem(pointernode->prox->info);
 				}
 				else
 				{
@@ -305,99 +307,4 @@ Posic getPrevious(Lista L, Posic p)
 	{
 		return NIL;
 	}
-}
-
-void killLista(Lista L, removerItem removedor)
-{
-	while (!isEmpty(L))
-	{
-		remover(L, getFirst(L), removedor);
-	}
-	free(L);
-}
-
-void removerInt(void *x)
-{
-	free(x);
-}
-
-// Função auxiliar para imprimir uma lista de inteiros
-void imprimirLista(Lista L)
-{
-	printf("Lista: ");
-	Posic p = getFirst(L);
-	while (p != NIL)
-	{
-		int *info = (int *)get(L, p);
-		printf("%d ", *info);
-		p = getNext(L, p);
-	}
-	printf("\n");
-}
-
-int main()
-{
-	Lista L = createLista(5);
-	printf("Lista criada com capacidade %d\n", maxLength(L));
-
-	printf("A lista esta vazia? %d\n", isEmpty(L));
-	printf("A lista esta cheia? %d\n", isFull(L));
-
-	Item i1 = malloc(sizeof(int));
-	*((int *)i1) = 1;
-	Item i2 = malloc(sizeof(int));
-	*((int *)i2) = 2;
-	Item i3 = malloc(sizeof(int));
-	*((int *)i3) = 3;
-	Item i4 = malloc(sizeof(int));
-	*((int *)i4) = 4;
-	Item i5 = malloc(sizeof(int));
-	*((int *)i5) = 5;
-	// Teste de inserção
-	insert(L, i1, 1.5);
-	insert(L, i2, 2.0);
-	insert(L, i3, 3.5);
-	insert(L, i4, 2.5);
-	insert(L, i5, 1.0);
-	imprimirLista(L);
-
-	// Teste de pop
-	Item i = pop(L, removerInt);
-	printf("Item removido: %d\n", *((int *)i));
-	imprimirLista(L);
-
-	// Teste de remover
-	Posic p = getLast(L);
-	remover(L, p, removerInt);
-	imprimirLista(L);
-
-	// Teste de insertBefore e insertAfter
-	p = getLast(L);
-	insertBefore(L, p, (Item)(&(int){6}));
-	p = getFirst(L);
-	insertAfter(L, p, (Item)(&(int){0}));
-	imprimirLista(L);
-
-	// Teste de getFirst, getNext, getLast e getPrevious
-	printf("Primeiro item: %d\n", *((int *)get(L, getFirst(L))));
-	printf("Ultimo item: %d\n", *((int *)get(L, getLast(L))));
-	p = getFirst(L);
-	while (p != NIL)
-	{
-		printf("Item atual: %d\n", *((int *)get(L, p)));
-		p = getNext(L, p);
-	}
-	p = getLast(L);
-	while (p != NIL)
-	{
-		printf("Item atual: %d\n", *((int *)get(L, p)));
-		p = getPrevious(L, p);
-	}
-
-	// Teste de killLista
-	killLista(L, removerInt);
-	printf("Lista destruida\n");
-
-	printf("hahahaha");
-	return 0;
 }
