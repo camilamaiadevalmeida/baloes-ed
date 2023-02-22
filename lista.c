@@ -317,6 +317,7 @@ void killLista(Lista L, void (*removerItem)(Item))
 	{
 		while (pointernode->prox != NIL)
 		{
+			printf("teste");
 			aux = pointernode;
 			pointernode = pointernode->prox;
 			if (aux->info != NIL)
