@@ -395,7 +395,7 @@ int main()
 	}
 
 	// Teste de killLista
-	killLista(L, removerInt);
+	killLista(L, free);
 	printf("Lista destruida\n");
 	free(i);
 	printf("hahahaha");
