@@ -11,12 +11,12 @@
 
    Um caminho completo (fullPath) compreende uma sequencia de subdiretorios(path),
    o nome do arquivo e sua extensao.
-   O caminho (path) e´ toda a subcadeia que esta' esquerda do ultimo separador ´/´,
-   incluindo-o. A extensao é a subcadeia que esta' `a direita do ultimo 
-   separador '.', incluindo-o. O nome do arquivo é a subcadeia que esta´ entre
-   estes dois últimos.
+   O caminho (path) eï¿½ toda a subcadeia que esta' esquerda do ultimo separador ï¿½/ï¿½,
+   incluindo-o. A extensao ï¿½ a subcadeia que esta' `a direita do ultimo 
+   separador '.', incluindo-o. O nome do arquivo ï¿½ a subcadeia que estaï¿½ entre
+   estes dois ï¿½ltimos.
 
-   Nesta operacoes, um caminho vazio ou um componente vazio e´ representado
+   Nesta operacoes, um caminho vazio ou um componente vazio eï¿½ representado
    por uma string vazia.
 
   Os resultados das operacoes sao atribuidos a paramentros da funcao.
@@ -25,10 +25,7 @@
 
  */
 
-void splitPath(char *fullPath,
-	       char *path, int lenPath,
-	       char *nomeArq, int lenNomeArq,
-	       char *extArq, int lenExtArq);
+void splitPath(char *fullPath, char *path, int lenPath, char *nomeArq, int lenNomeArq,char *extArq, int lenExtArq);
 /*
     Dado um caminho (fullPath), copia cada um de seus componentes
     nos parametros path (caminho do arquivo), nomeArq (nome do arquivo, sem
@@ -58,9 +55,9 @@ void joinFilePath(char *path, char *fileName, char *fullPath, int lenFullPath);
    "aaa/bbb"    "c"      =>  "aaa/bbb/c"
  */
 
-void joinAll(char *path, char *fileName, char *ext, char *fullPath, len fullPath);
+void joinAll(char *path, char *fileName, char *ext, char *fullPath, int lenFullPath);
 /*
-   Semelhante a joinFilePath, porem, a extensao do arquivo e´ informado explicitamente
+   Semelhante a joinFilePath, porem, a extensao do arquivo eï¿½ informado explicitamente
    pelo parametro ext. Exemplos:
 
    path       fileName  ext     => fullPath
@@ -71,7 +68,7 @@ void joinAll(char *path, char *fileName, char *ext, char *fullPath, len fullPath
    "aaa/bbb"  "ccc"     ""      => "aaa/bbb/ccc"
  */
 
-void getFileName(char *fullPath, char *fileName, char *lenFileName);
+void getFileName(char *fullPath, char *fileName, int lenFileName);
 /*
     Dado um caminho completo (fullPath), copia em fileName o nome do arquivo 
     (possivelmente) com sua extensao. Exemplos:
