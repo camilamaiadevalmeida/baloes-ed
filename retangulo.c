@@ -9,6 +9,7 @@ struct Rectangle
     double h;
     char *cor;
     char *corb;
+    double rotacao;
 };
 
 retangulo createRetangulo(int id, double x, double y, double w, double h, char *corb, char *corp)
@@ -116,6 +117,18 @@ double retanguloGetarea(retangulo ret)
 {
     struct Rectangle *pointer = ret;
     return pointer->h * pointer->w;
+}
+
+double retanguloGetrotacao(retangulo ret)
+{
+    struct Rectangle *pointer = ret;
+    return pointer->rotacao;
+}
+
+void retanguloSetrotacao(retangulo ret, double rotacao)
+{
+    struct Rectangle *pointer = ret;
+    pointer->rotacao = rotacao;
 }
 
 void retanguloFree(retangulo ret)

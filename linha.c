@@ -8,8 +8,7 @@ struct Line
     double x2;
     double y2;
     char *cor;
-    int hp;
-    int np;
+    double rotacao;
 };
 
 linha createLinha(int id, double x1, double y1, double x2, double y2, char *cor)

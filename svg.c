@@ -72,10 +72,11 @@ void escreveLinhaSvg(ArqSvg fsvg, double x1, double y1, double x2, double y2, ch
 void preparaDecoracaoTexto(ArqSvg fsvg, char *deco, int decoLen,
                            char *fontFamily, char *fontStyle,
                            char *fontWeight, char *fontSize,
-                           char *fontColor, char *textAnchor)
+                           char *fontColor, char *textAnchor,
+                           char *strokeColor)
 {
-    snprintf(deco, decoLen, "font-family:%s;font-style:%s;font-weight:%s;font-size:%spx;fill:%s;text-anchor:%s",
-             fontFamily, fontStyle, fontWeight, fontSize, fontColor, textAnchor);
+    snprintf(deco, decoLen, "font-family:%s;font-style:%s;font-weight:%s;font-size:%spx;fill:%s;text-anchor:%s;stroke:%s;stroke-width:1px",
+             fontFamily, fontStyle, fontWeight, fontSize, fontColor, textAnchor, strokeColor);
 }
 
 void escreveTextoSvg(ArqSvg fsvg, double x, double y, char *deco, char *texto)
