@@ -87,7 +87,5 @@ indicado por p. Se p for o primeiro elemento da lista, retorna NIL.
 p deve indicar um elemento existente em L. */
 Posic getPrevious(Lista L, Posic p);
 
-/** Libera toda memória alocada pela lista. */
-void killLista(Lista L, void (*removerItem)(Item));
 
 #endif
