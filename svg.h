@@ -103,7 +103,8 @@ acima.
 void preparaDecoracaoTexto(ArqSvg fsvg, char *deco, int decoLen,
                            char *fontFamily, char *fontStyle,
                            char *fontWeight, char *fontSize,
-                           char *fontColor, char *textAnchor);
+                           char *fontColor, char *textAnchor,
+                           char *strokeColor);
 
 /*
   Insere no arquivo svg o texto txt na coordenada (x,y).

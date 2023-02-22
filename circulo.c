@@ -7,6 +7,7 @@ struct Circle
     double cy;
     double r;
     char *fill;
+
 };
 
 Circle *createCircle(int id, double x, double y, double r, char *fill)

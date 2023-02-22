@@ -36,6 +36,9 @@ void retanguloSetcorb(retangulo ret, char *corb);
 /** retanguloSetcorp define a cor de preenchimento do retângulo*/
 void retanguloSetcorp(retangulo ret, char *corp);
 
+/** retanguloSetrotacao define a rotação do retângulo*/
+void retanguloSetrotacao(retangulo ret, double rotacao);
+
 /** retanguloGeti retorna o id do retângulo*/
 int retanguloGeti(retangulo ret);
 
@@ -59,6 +62,9 @@ char *retanguloGetcorp(retangulo ret);
 
 /** retanguloGetarea retorna a area do retângulo*/
 double retanguloGetarea(retangulo ret);
+
+/** retanguloGetRotacao retorna a rotação do retângulo*/
+double retanguloGetRotacao(retangulo ret);
 
 /** retanguloFree libera a memória alocada para o retângulo*/
 void retanguloFree(retangulo ret);
