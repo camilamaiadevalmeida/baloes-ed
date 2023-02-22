@@ -136,6 +136,7 @@ void remover(Lista L, Posic p, void (*removerItem)(Item))
 {
 	struct lista *pointer = L;
 	struct listanode *pointernode = pointer->l;
+
 	if (!isEmpty(L))
 	{
 		if (p == getFirst(L))
@@ -311,9 +312,40 @@ void killLista(Lista L, void (*removerItem)(Item))
 {
 	struct lista *pointer = L;
 	struct listanode *pointernode = pointer->l;
-	while (!isEmpty(L))
+	struct listanode *aux;
+	if (!isEmpty(L))
 	{
-		remover(L, pointernode, removerItem);
+		while (pointernode->prox != NIL)
+		{
+			aux = pointernode;
+			pointernode = pointernode->prox;
+			if (aux->info != NIL)
+			{
+				if (removerItem != NIL)
+				{
+					removerItem(aux->info);
+				}
+				else
+				{
+					aux->info = NIL;
+				}
+			}
+			aux->prox = NIL;
+			free(aux);
+		}
+		if (pointernode->info != NIL)
+		{
+			if (removerItem != NIL)
+			{
+				removerItem(pointernode->info);
+			}
+			else
+			{
+				pointernode->info = NIL;
+			}
+		}
+		pointernode->prox = NIL;
+		free(pointernode);
 	}
 	free(L);
 }
