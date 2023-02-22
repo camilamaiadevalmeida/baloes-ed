@@ -169,7 +169,7 @@ void remover(Lista L, Posic p, void (*removerItem)(Item))
 			{
 				if (removerItem != NIL)
 				{
-					removedor(pointernode->prox->info);
+					removerItem(pointernode->prox->info);
 				}
 				else
 				{
