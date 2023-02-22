@@ -6,49 +6,56 @@ typedef void* circulo;
 /*
 Cria um circulo com os parametros passados
 */
-circulo *createCircle(int id, double x, double y, double r, char *fill);
+circulo *createCircle(int id, double x, double y, double r, char *corp,  char *corb);
 /*
 Define o id do circulo
 */
-void circleSetId(circulo *cir, int id);
+void circleSetId(circulo ci, int id);
 /*
 define a coordenada x do circulo
 */
-void circleSetCx(circulo *cir, double x);
+void circleSetCx(circulo ci, double x);
 /*
 define a coordenada y do circulo
 */
-void circleSetCy(circulo *cir, double y);
+void circleSetCy(circulo ci, double y);
 /*
 define o raio do circulo
 */
-void circleSetR(circulo *cir, double r);
+void circleSetR(circulo ci, double r);
 /*
 define a cor de preenchimento do circulo
 */
-void circleSetFill(circulo *cir, char *fill);
+void circleSetFill(circulo ci, char *fill);
 /*
 Libera a memoria alocada para o circulo
 */
-void circleFree(circulo *cir);
+void circleFree(circulo ci);
 /*
 Retorna o id do circulo
 */
-int circleGetId(circulo *cir);
+int circleGetId(circulo ci);
 /*
 Retorna a coordenada x do circulo
 */
-double circleGetCx(circulo *cir);
+double circleGetCx(circulo ci);
 /*
 Retorna a coordenada y do circulo
 */
-double circleGetCy(circulo *cir);
+double circleGetCy(circulo ci);
 /*
 Retorna o raio do circulo
 */
-double circleGetR(circulo *cir);
+double circleGetR(circulo ci);
 /*
 Retorna a cor de preenchimento do circulo
 */
-char *circleGetFill(circulo *cir);
+char cicleGetCorp(circulo ci);
+
+char cicleGetCorb(circulo ci);
+
+void circleSetCorb(circulo ci, char *corb);
+
+void circleSetCorp(circulo ci, char *corp);
+
 #endif

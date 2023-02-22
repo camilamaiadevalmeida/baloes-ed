@@ -1,77 +1,122 @@
 #include "circulo.h"
 
-struct Circle
+struct Circulo
 {
     int id;
-    double cx;
-    double cy;
+    double x;
+    double y;
     double r;
-    char *fill;
-
+    char *corb;
+    char *corp;
+    double rotacao;
 };
 
-Circle *createCircle(int id, double x, double y, double r, char *fill)
+circulo *createCircle(int id, double x, double y, double r, char *corb, char *corp)
 {
-    Circle *cir = malloc(sizeof(Circle));
-    cir->id = id;
-    cir->cx = x;
-    cir->cy = y;
-    cir->r = r;
-    cir->fill = fill;
-    return cir;
+    struct Circulo *ci = malloc(sizeof(struct Circulo));
+    circleSeti(ci, id);
+    circleSetx(ci, x);
+    circleSety(ci, y);
+    circleSetr(ci, r);
+    circleSetcorb(ci, corb);
+    circleSetcorp(ci, corp);
+    return ci;
 }
 
-void circleSetId(Circle *cir, int id)
+void circleSeti(circulo ci, int i)
 {
-    cir->id = id;
+    struct Circulo *pointer = ci;
+    pointer->id = i;
 }
 
-void circleSetCx(Circle *cir, double cx)
+void circleSetx(circulo ci, double x)
 {
-    cir->cx = cx;
+    struct Circulo *pointer = ci;
+    pointer->x = x;
 }
 
-void circleSetCy(Circle *cir, double cy)
+void circleSety(circulo ci, double y)
 {
-    cir->cy = cy;
+    struct Circulo *pointer = ci;
+    pointer->y = y;
 }
 
-void circleSetR(Circle *cir, double r)
+void circleSetr(circulo ci, double r)
 {
-    cir->r = r;
+    struct Circulo *pointer = ci;
+    pointer->r = r;
 }
 
-void circleSetFill(Circle *cir, char *fill)
+void circleSetcorb(circulo ci, char *corb)
 {
-    cir->fill = fill;
+    struct Circulo *pointer = ci;
+    char *corbstring = malloc(sizeof(char) * strlen(corb));
+    strcpy(corbstring, corb);
+    pointer->corb = corbstring;
 }
 
-void circleFree(Circle *cir)
+void circleSetcorp(circulo ci, char *corp)
 {
-    free(cir);
+    struct Circulo *pointer = ci;
+    char *corpstring = malloc(sizeof(char) * strlen(corp));
+    strcpy(corpstring, corp);
+    pointer->corp = corpstring;
 }
 
-int circleGetId(Circle *cir)
+void circleSetrotacao(circulo ci, double rotacao)
 {
-    return cir->id;
+    struct Circulo *pointer = ci;
+    pointer->rotacao = rotacao;
 }
 
-double circleGetCx(Circle *cir)
+int circleGeti(circulo ci)
 {
-    return cir->cx;
+    struct Circulo *pointer = ci;
+    return pointer->id;
 }
 
-double circleGetCy(Circle *cir)
+double circleGetx(circulo ci)
 {
-     return cir->cy;
+    struct Circulo *pointer = ci;
+    return pointer->x;
 }
 
-double circleGetR(Circle *cir)
+double circleGety(circulo ci)
 {
-    return cir->r;
+    struct Circulo *pointer = ci;
+    return pointer->y;
 }
 
-char *circleGetFill(Circle *cir)
+double circleGetr(circulo ci)
 {
-    return cir->fill;
+    struct Circulo *pointer = ci;
+    return pointer->r;
 }
+
+char *circleGetcorb(circulo ci)
+{
+    struct Circulo *pointer = ci;
+    return pointer->corb;
+}
+
+char *circleGetcorp(circulo ci)
+{
+    struct Circulo *pointer = ci;
+    return pointer->corp;
+}
+
+double circleGetrotacao(circulo ci)
+{
+    struct Circulo *pointer = ci;
+    return pointer->rotacao;
+}
+
+void circleFree(circulo ci)
+{
+    struct Circulo *pointer = ci;
+    free(pointer->corb);
+    free(pointer->corp);
+    free(pointer);
+}
+
+
