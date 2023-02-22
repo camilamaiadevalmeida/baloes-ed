@@ -49,6 +49,12 @@ double linhaGety2(linha li);
 /** linhaGetcor recebe uma linha e retorna a cor da linha */
 char *linhaGetcor(linha li);
 
+/** linhaSetRotacao recebe uma linha e um double e seta o angulo de rotação da linha */
+void linhaSetRotacao(linha li, double rotacao);
+
+/** linhaGetRotacao recebe uma linha e retorna o angulo de rotação da linha */
+double linhaGetRotacao(linha li);
+
 /** linhaFree recebe uma linha e libera a memória alocada para ela */
 void linhaFree(linha li);
 

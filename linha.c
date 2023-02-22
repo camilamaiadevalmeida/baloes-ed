@@ -97,6 +97,19 @@ char *linhaGetcor(linha li)
     return pointer->cor;
 }
 
+void linhaSetRotacao(linha li, double rotacao)
+{
+    struct Line *pointer = li;
+    pointer->rotacao = rotacao;
+}
+
+double linhaGetRotacao(linha li)
+{
+    struct Line *pointer = li;
+    return pointer->rotacao;
+}
+
+
 void linhaFree(linha li)
 {
     struct Line *pointer = li;
