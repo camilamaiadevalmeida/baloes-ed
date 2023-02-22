@@ -132,7 +132,7 @@ Item pop(Lista L)
 	}
 }
 
-void remover(Lista L, Posic p, removerItem removedor)
+void remover(Lista L, Posic p, void (*removerItem)(Item))
 {
 	struct lista *pointer = L;
 	struct listanode *pointernode = pointer->l;
@@ -147,9 +147,9 @@ void remover(Lista L, Posic p, removerItem removedor)
 			}
 			if (pointernode->info != NIL)
 			{
-				if (removedor != NIL)
+				if (removerItem != NIL)
 				{
-					removedor(pointernode->info);
+					removerItem(pointernode->info);
 				}
 				else
 				{
@@ -167,7 +167,7 @@ void remover(Lista L, Posic p, removerItem removedor)
 			}
 			if (pointernode->prox->info != NIL)
 			{
-				if (removedor != NIL)
+				if (removerItem != NIL)
 				{
 					removedor(pointernode->prox->info);
 				}
@@ -307,11 +307,11 @@ Posic getPrevious(Lista L, Posic p)
 	}
 }
 
-void killLista(Lista L, removerItem removedor)
+void killLista(Lista L, void (*removerItem)(Item))
 {
 	while (!isEmpty(L))
 	{
-		remover(L, getFirst(L), removedor);
+		remover(L, getFirst(L), removerItem);
 	}
 	free(L);
 }
