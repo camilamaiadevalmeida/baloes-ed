@@ -309,9 +309,11 @@ Posic getPrevious(Lista L, Posic p)
 
 void killLista(Lista L, void (*removerItem)(Item))
 {
+	struct lista *pointer = L;
+	struct listanode *pointernode = pointer->l;
 	while (!isEmpty(L))
 	{
-		remover(L, getFirst(L), removerItem);
+		remover(L, pointernode, removerItem);
 	}
 	free(L);
 }
@@ -395,7 +397,7 @@ int main()
 	}
 
 	// Teste de killLista
-	killLista(L, free);
+	killLista(L, removerInt);
 	printf("Lista destruida\n");
 	free(i);
 	printf("hahahaha");
