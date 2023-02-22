@@ -88,6 +88,6 @@ p deve indicar um elemento existente em L. */
 Posic getPrevious(Lista L, Posic p);
 
 /** Libera toda memória alocada pela lista. */
-void killLista(Lista L, removerItem removedor);
+void killLista(Lista L, void (*removerItem)(Item));
 
 #endif
